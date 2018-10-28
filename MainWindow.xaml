@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LliguinQBLinker"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        mc:Ignorable="d" Height="600" Width="1080"
+        mc:Ignorable="d" Height="600" Width="1080" MinWidth="1080" MinHeight="600"
         Title="Lliguin Inc." WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow">
     <Window.Resources>
         <Storyboard x:Key="OpenMenu">
@@ -13,12 +13,20 @@
                 <EasingDoubleKeyFrame KeyTime="0" Value="70" />
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="200" />
             </DoubleAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" Storyboard.TargetName="GridMain">
+                <SplineThicknessKeyFrame KeyTime="0" Value="70,60,0,0" />
+                <SplineThicknessKeyFrame KeyTime="0:0:0.5" Value="200,60,0,0" />
+            </ThicknessAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="CloseMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="200" />
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="70" />
             </DoubleAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" Storyboard.TargetName="GridMain">
+                <SplineThicknessKeyFrame KeyTime="0" Value="200,60,0,0" />
+                <SplineThicknessKeyFrame KeyTime="0:0:0.5" Value="70,60,0,0" />
+            </ThicknessAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
     <Window.Triggers>
@@ -30,7 +38,6 @@
         </EventTrigger>
     </Window.Triggers>
     <Grid Background="#FFDEDEDE">
-        <Grid x:Name="GridMain" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="540" Width="1010" />
         <Grid Height="60" VerticalAlignment="Top" Background="#FF5C99D6">
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="1" ShadowDepth="1" Color="#FFACACAC" />
@@ -49,7 +56,7 @@
             </StackPanel>
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22">Lliguin Quickbooks Connector</TextBlock>
         </Grid>
-        <Grid x:Name="GridMenu" Width="70" HorizontalAlignment="Left" Background="#FF31577E">
+        <Grid x:Name="GridMenu" Width="70" HorizontalAlignment="Left" Background="#FF31577E" Panel.ZIndex="12">
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="2" ShadowDepth="1" Color="#FFAEAEAE" />
             </Grid.Effect>
@@ -100,5 +107,6 @@
                 </ListView>
             </StackPanel>
         </Grid>
+        <Grid x:Name="GridMain" Margin="70 60 0 0" />
     </Grid>
 </Window>
